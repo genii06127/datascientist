@@ -1,0 +1,6 @@
+# test code 
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plot
+
+v1 = np.arange(100)
