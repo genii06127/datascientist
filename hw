@@ -1,0 +1,28 @@
+1. Suppose that the data mining task is to cluster points (with .x, y/ representing location) into three clusters, where the points are 
+A1.2,10/,A2.2,5/,A3.8,4/,B1.5,8/,B2.7,5/,B3.6,4/,C1.1,2/,C2.4,9/. 
+The distance function is Euclidean distance. Suppose initially we assign A1, B1, and C1 as the center of each cluster, respectively. Use the k-means algorithm to show only 
+(a) The three cluster centers after the first round of execution. 
+
+(b) The final three clusters. 
+
+
+2.1 A data mining routine has been applied to a transaction dataset and has classified 88 records as fraudulent (30 correctly so) and 952 as nonfraudulent (920 correctly so). 218 Construct the confusion matrix and calculate the error rate. 
+Classification confusion Matrix
+	Prediction class
+Actual Class	fraud	Non-fraud
+fraud	30	58
+Non-fraud	32	920
+	Error rate : ((58+32))/((30+58+32+920)) = 0.08653
+	Accuracy = 1- 0.08653 = 0.91347
+
+2.2 Suppose that this routine has an adjustable cutoff (threshold) mechanism by which you can alter the proportion of records classified as fraudulent. Describe how moving the cutoff up or down would affect the following: 
+The nominal default cutoff value in tow -class classification is 0.5
+If the probability of a record being as class I member is greater than 0.5, that record is classified as a I and if <0.5-, classified as 0
+Cutoff (threshold)는 모델이 사기라고 판단하는 비율 또는 성향을 의미한다. 즉 cutoff가 0.5이상이라는 것은 모델이 사기를 판단할 확률이 0.5 이상으로 주로 사기라고 classification함을 의미하고 cutoff가 0.5이하라고 하는 것은 모델이 사기가 아니라고 classification할 확률이 더 높다는 것을 의미한다. Training set에서 대부분이 사기가 아닐 경우, cutoff가 낮을수록 Precision 측면에서 모델의 성능 높은 것처럼 보일 수 있으나 Recall 측면에서는 모델의 성능이 떨어질 수 있음을 알고 있어야 한다. (Precision & Recall는 Trade-off 관계를 가짐)
+
+	The classification error rate for records that are truly fraudulent 
+Cutoff >0.5 이면, Model(System)은 각 record를 Fraud라고 Classification하는 성향이 강해 진다. 따라서 Non-True Fraud을 True-Fraud로 Classification하게 되고, total error rate는 높아지게 된다. 
+반대로, cutoff <0.5 이면, Model(System)은 각 record를 Non-Fraud로 classification하는 성향이 강해 진다. 따라서 True-Fraud를 Non-True Fraud로 classification하고 된다. 
+b. The classification error rate for records that are truly nonfraudulent
+The default cutoff value is 0.5%
+a.Effect of moving cutoff on error rate for records that are truly fraudulent: By moving the cutoff up the non-fraudulent records will decrease and causes increase in the error rate and by moving the cutoff down, the fraudulent records will increase and thus decrease the error rate
